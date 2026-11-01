@@ -1,0 +1,96 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>简阅 · 阅读与剪藏</title>
+    <link rel="stylesheet" href="popup.css">
+  </head>
+  <body>
+    <main class="popup">
+      <header class="brand-row">
+        <div class="brand-mark" aria-hidden="true">阅</div>
+        <div class="brand-copy">
+          <div class="brand-name">简阅 <span>Reader</span></div>
+          <div class="brand-caption">纯净阅读 · NOTION · WEBDAV · MD</div>
+        </div>
+        <button id="settings" class="icon-button" title="设置 Notion 与 WebDAV" aria-label="设置 Notion 与 WebDAV">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.85" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <circle cx="12" cy="12" r="3"></circle>
+            <path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 1 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 1 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 1 1-2.83-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 1 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 1 1 2.83-2.83l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 1 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 1 1 2.83 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9c.26.604.852.997 1.51 1H21a2 2 0 1 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"></path>
+          </svg>
+        </button>
+      </header>
+
+      <button id="reader" class="reader-button">
+        <span class="reader-icon" aria-hidden="true">Aa</span>
+        <span class="reader-copy"><strong>进入阅读模式</strong><small>清爽排版，专注正文</small></span>
+        <span class="arrow" aria-hidden="true">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M7 17L17 7"></path>
+            <path d="M8 7h9v9"></path>
+          </svg>
+        </span>
+      </button>
+
+      <div class="section-label"><span>保存到 Notion</span><i></i></div>
+
+      <div id="quick-login-box" class="quick-login hidden">
+        <p class="quick-login-copy">尚未连接 Notion，点击下方即可直接登录账号。</p>
+        <button id="quick-login-btn" class="quick-login-button" type="button">直接登录 Notion 账号</button>
+      </div>
+
+      <div id="target-row" class="target-row hidden">
+        <label for="popup-target">位置</label>
+        <select id="popup-target" title="选择保存位置"></select>
+      </div>
+
+      <div class="clip-actions">
+        <button id="clip-selection" class="clip-button" title="保存当前选中的文字">
+          <svg class="clip-svg" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M10 11H6a1 1 0 0 1-1-1V7a1 1 0 0 1 1-1h3a1 1 0 0 1 1 1v6c0 2.667-1.333 4.333-4 5"></path>
+            <path d="M19 11h-4a1 1 0 0 1-1-1V7a1 1 0 0 1 1-1h3a1 1 0 0 1 1 1v6c0 2.667-1.333 4.333-4 5"></path>
+          </svg>
+          <span>选中文本</span>
+        </button>
+        <button id="clip-article" class="clip-button" title="保存整篇正文">
+          <svg class="clip-svg" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <rect x="4" y="3" width="16" height="18" rx="2.5"></rect>
+            <line x1="8" y1="8" x2="16" y2="8"></line>
+            <line x1="8" y1="12" x2="16" y2="12"></line>
+            <line x1="8" y1="16" x2="13" y2="16"></line>
+          </svg>
+          <span>整篇正文</span>
+        </button>
+      </div>
+
+      <div class="section-label"><span>Markdown 导出与 WebDAV</span><i></i></div>
+      <div class="clip-actions">
+        <button id="export-md" class="clip-button" title="将当前网页导出为本地 Markdown (.md) 文件">
+          <svg class="clip-svg" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M12 3v12"></path>
+            <path d="M7 10l5 5 5-5"></path>
+            <path d="M5 20h14"></path>
+          </svg>
+          <span>导出本地 MD</span>
+        </button>
+        <button id="save-webdav" class="clip-button" title="将当前网页保存到 WebDAV「网页剪藏」目录">
+          <svg class="clip-svg" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M17.5 19H7a4.5 4.5 0 0 1-.4-8.98A6 6 0 0 1 18 11a3.5 3.5 0 0 1-.5 8z"></path>
+            <path d="M12 11v6"></path>
+            <path d="M9.5 13.5L12 11l2.5 2.5"></path>
+          </svg>
+          <span>存入 WebDAV</span>
+        </button>
+      </div>
+
+      <div id="status" class="status" role="status" aria-live="polite"></div>
+      <footer>
+        <span class="connection-dot"></span>
+        <span id="connection">正在检测 Notion 账号…</span>
+        <button id="relogin-link" class="link-button hidden" type="button">切换/设置</button>
+      </footer>
+    </main>
+    <script src="popup.js"></script>
+  </body>
+</html>

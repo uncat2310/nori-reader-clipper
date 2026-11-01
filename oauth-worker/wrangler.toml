@@ -1,0 +1,7 @@
+name = "nori-notion-oauth"
+main = "src/index.js"
+compatibility_date = "2026-10-29"
+
+[vars]
+EXTENSION_ID = "REPLACE_WITH_CHROME_EXTENSION_ID"
+NOTION_REDIRECT_URI = "https://REPLACE_WITH_YOUR_WORKER.workers.dev/oauth/callback"

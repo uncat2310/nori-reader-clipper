@@ -1,0 +1,368 @@
+:root {
+  color-scheme: light;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Microsoft YaHei", sans-serif;
+  font-synthesis: none;
+  color: #282923;
+  background: #f6f5f0;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+}
+
+.settings-page {
+  width: min(100% - 48px, 680px);
+  margin: 32px auto 36px;
+}
+
+.page-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 14px;
+  margin-bottom: 20px;
+}
+
+.header-brand {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.header-pill {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  height: 30px;
+  padding: 0 12px;
+  border: 1px solid #e4e2da;
+  border-radius: 999px;
+  background: #ffffff;
+  color: #677064;
+  font-size: 11px;
+  font-weight: 550;
+  line-height: 1;
+}
+
+.brand-mark {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  width: 48px;
+  height: 48px;
+  border-radius: 14px;
+  background: #e3ebde;
+  color: #385341;
+  font: 700 24px/1 "Songti SC", Georgia, serif;
+}
+
+.header-copy {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 4px;
+}
+
+.eyebrow {
+  display: block;
+  margin: 0;
+  color: #828479;
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 1.4px;
+  line-height: 1.2;
+}
+
+h1 {
+  margin: 0;
+  color: #23241f;
+  font: 600 24px/1.25 "Songti SC", Georgia, serif;
+}
+
+h2 {
+  margin: 5px 0 0;
+  color: #23241f;
+  font: 600 20px/1.25 "Songti SC", Georgia, serif;
+}
+
+.card {
+  padding: 26px 28px;
+  border: 1px solid #e6e4dc;
+  border-radius: 16px;
+  background: #ffffff;
+  box-shadow: 0 4px 18px rgba(48, 45, 34, 0.035);
+}
+
+.webdav-card {
+  margin-top: 18px;
+}
+
+.card-heading {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  height: 28px;
+  padding: 0 12px;
+  border-radius: 999px;
+  background: #f0efe9;
+  color: #727369;
+  font-size: 11px;
+  font-weight: 600;
+  line-height: 1;
+}
+
+.badge.connected {
+  background: #e9f3e7;
+  color: #3f6b46;
+}
+
+.intro {
+  margin: 10px 0 14px;
+  color: #6f7066;
+  font-size: 13px;
+  line-height: 1.65;
+}
+
+.workspace {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  width: 100%;
+  height: 38px;
+  margin: 0 0 12px;
+  padding: 0 14px;
+  border: 1px solid #dfe8dc;
+  border-radius: 10px;
+  background: #f2f6f0;
+  color: #35503a;
+  font-size: 12px;
+  font-weight: 550;
+}
+
+.connect-actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 10px;
+  width: 100%;
+}
+
+.connect-actions > button {
+  flex: 1 1 0;
+}
+
+#disconnect-button,
+#webdav-clear-btn {
+  flex: 0 0 112px;
+}
+
+.webdav-actions {
+  margin-top: 14px;
+}
+
+button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  height: 40px;
+  padding: 0 18px;
+  border: 1px solid #385341;
+  border-radius: 10px;
+  background: #385341;
+  color: #ffffff;
+  cursor: pointer;
+  font: inherit;
+  font-size: 12.5px;
+  font-weight: 550;
+  line-height: 1;
+  white-space: nowrap;
+}
+
+button:hover {
+  border-color: #2c4535;
+  background: #2c4535;
+}
+
+button:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.secondary {
+  border: 1px solid #dcdad0;
+  background: #ffffff;
+  color: #464c43;
+}
+
+.secondary:hover {
+  border-color: #b6c5b6;
+  background: #f5f7f2;
+  color: #2f4633;
+}
+
+.hidden {
+  display: none !important;
+}
+
+.status {
+  margin-top: 12px;
+  padding: 9px 12px;
+  border-radius: 9px;
+  background: #f4f3ee;
+  color: #5d6759;
+  font-size: 12px;
+  line-height: 1.5;
+}
+
+.status:empty {
+  display: none;
+}
+
+.status.error {
+  background: #fdf1ef;
+  color: #a2493d;
+}
+
+.status.success {
+  background: #edf5eb;
+  color: #3c6943;
+}
+
+.destination {
+  margin-top: 18px;
+  padding-top: 18px;
+  border-top: 1px solid #eceae2;
+}
+
+label {
+  display: block;
+  margin: 0 0 8px;
+  color: #3f4139;
+  font-size: 12.5px;
+  font-weight: 600;
+  line-height: 1.3;
+}
+
+.destination-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+select {
+  flex: 1;
+  min-width: 0;
+  height: 40px;
+  padding: 0 36px 0 12px;
+  border: 1px solid #dcdad0;
+  border-radius: 10px;
+  outline: 0;
+  appearance: none;
+  -webkit-appearance: none;
+  background-color: #fdfdfb;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12' fill='none' stroke='%235a5c52' stroke-width='1.75' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M2.5 4.5L6 8L9.5 4.5'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 12px center;
+  color: #2c2d27;
+  font: inherit;
+  font-size: 12.5px;
+}
+
+select:focus,
+input:focus {
+  border-color: #849d82;
+  box-shadow: 0 0 0 3px rgba(132, 157, 130, 0.16);
+}
+
+.destination-row button {
+  flex: 0 0 112px;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  margin: 0;
+}
+
+.field-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+  margin-bottom: 16px;
+}
+
+.field-item {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+}
+
+input {
+  width: 100%;
+  height: 40px;
+  padding: 0 12px;
+  border: 1px solid #dcdad0;
+  border-radius: 10px;
+  outline: 0;
+  background: #fdfdfb;
+  color: #262820;
+  font: inherit;
+  font-size: 12.5px;
+}
+
+input::placeholder {
+  color: #aeada4;
+}
+
+.help {
+  margin: 8px 0 0;
+  color: #85867c;
+  font-size: 11.5px;
+  line-height: 1.6;
+}
+
+code {
+  padding: 2px 5px;
+  border-radius: 5px;
+  background: #f0efe8;
+  color: #484a40;
+  font-size: 11px;
+}
+
+.fine-print {
+  margin: 16px 0 0;
+  color: #93948a;
+  font-size: 11.5px;
+  line-height: 1.5;
+  text-align: center;
+}
+
+@media (max-width: 560px) {
+  .settings-page {
+    width: min(100% - 32px, 680px);
+    margin: 28px auto 36px;
+  }
+  .card {
+    padding: 20px;
+  }
+  .destination-row,
+  .field-grid {
+    grid-template-columns: 1fr;
+    flex-direction: column;
+    align-items: stretch;
+  }
+}

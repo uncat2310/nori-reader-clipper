@@ -1,0 +1,38 @@
+{
+  "manifest_version": 3,
+  "name": "简阅",
+  "description": "Safari 风格纯净阅读模式，支持一键保存到 Notion、WebDAV 服务器或导出本地 Markdown。",
+  "version": "1.4.0",
+  "minimum_chrome_version": "116",
+  "permissions": [
+    "activeTab",
+    "tabs",
+    "scripting",
+    "storage",
+    "identity",
+    "cookies",
+    "declarativeNetRequestWithHostAccess"
+  ],
+  "optional_host_permissions": ["https://*/*"],
+  "host_permissions": [
+    "https://*/*",
+    "http://*/*",
+    "https://api.notion.com/*",
+    "https://www.notion.so/*",
+    "https://notion.so/*",
+    "https://*.notion.so/*",
+    "https://www.notion.com/*",
+    "https://*.notion.com/*"
+  ],
+  "background": {
+    "service_worker": "service-worker.js"
+  },
+  "action": {
+    "default_title": "简阅 · 阅读与 Notion 剪藏",
+    "default_popup": "popup.html"
+  },
+  "options_ui": {
+    "page": "options.html",
+    "open_in_tab": true
+  }
+}

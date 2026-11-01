@@ -1,0 +1,95 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>简阅 · 设置</title>
+    <link rel="stylesheet" href="options.css">
+  </head>
+  <body>
+    <main class="settings-page">
+      <header class="page-header">
+        <div class="header-brand">
+          <div class="brand-mark" aria-hidden="true">阅</div>
+          <div class="header-copy">
+            <div class="eyebrow">简阅 · 纯净阅读 · NOTION 与 WEBDAV 剪藏</div>
+            <h1>剪藏与导出设置</h1>
+          </div>
+        </div>
+        <span class="header-pill">本地直连 · 隐私安全</span>
+      </header>
+
+      <section class="card connect-card">
+        <div class="card-heading">
+          <div>
+            <span class="eyebrow">ZERO-CONFIG LOGIN</span>
+            <h2>直接登录 Notion</h2>
+          </div>
+          <span id="connection-badge" class="badge">未连接</span>
+        </div>
+        <p class="intro">直接使用你在浏览器中的 Notion 账号登录，自动读取你的工作区页面与数据库。</p>
+        <div id="workspace" class="workspace hidden"></div>
+        <div class="connect-actions">
+          <button id="connect-button" type="button">直接登录 Notion 账号</button>
+          <button id="auto-create-button" class="secondary hidden" type="button">✨ 自动创建「网页剪藏」页</button>
+          <button id="disconnect-button" class="secondary hidden" type="button">断开连接</button>
+        </div>
+        <div id="oauth-status" class="status" role="status" aria-live="polite"></div>
+
+        <div class="destination">
+          <label for="database-select">剪藏保存到</label>
+          <div class="destination-row">
+            <select id="database-select" disabled>
+              <option value="">登录 Notion 后自动加载页面与数据库</option>
+            </select>
+            <button id="refresh-targets" class="secondary" type="button" disabled>刷新列表</button>
+          </div>
+          <p class="help">切换下拉框会自动保存目标位置；也可以点击上方「✨ 自动创建『网页剪藏』页」一键建好专属剪藏页。</p>
+        </div>
+      </section>
+
+      <section class="card connect-card webdav-card">
+        <div class="card-heading">
+          <div>
+            <span class="eyebrow">WEBDAV MARKDOWN SYNC</span>
+            <h2>连接 WebDAV 服务器</h2>
+          </div>
+          <span id="webdav-badge" class="badge">未配置</span>
+        </div>
+        <p class="intro">配置坚果云、Nextcloud、Alist 或群晖 WebDAV 后，可在阅读模式或弹窗中一键将网页存为 Markdown 文件，并自动在服务器上新建「网页剪藏」文件夹。</p>
+
+        <form id="webdav-form">
+          <div class="field-grid">
+            <div class="field-item">
+              <label for="webdav-url">WebDAV 服务器地址</label>
+              <input id="webdav-url" type="url" placeholder="https://dav.jianguoyun.com/dav/" required>
+            </div>
+            <div class="field-item">
+              <label for="webdav-folder">自动归档文件夹</label>
+              <input id="webdav-folder" type="text" value="网页剪藏" placeholder="网页剪藏" required>
+            </div>
+          </div>
+          <div class="field-grid">
+            <div class="field-item">
+              <label for="webdav-username">WebDAV 账号 / 邮箱</label>
+              <input id="webdav-username" type="text" placeholder="例如：user@example.com" required>
+            </div>
+            <div class="field-item">
+              <label for="webdav-password">应用密码 / 授权码</label>
+              <input id="webdav-password" type="password" placeholder="粘贴 WebDAV 应用密码" required>
+            </div>
+          </div>
+          <p class="help">提示：若使用坚果云 WebDAV，请在坚果云网页版「账户信息 → 安全选项 → 第三方应用管理」中生成应用密码；保存时会自动检测或创建 <code>/网页剪藏/</code> 文件夹。</p>
+          <div class="connect-actions webdav-actions">
+            <button id="webdav-save-btn" type="submit">保存并测试 WebDAV（自动建「网页剪藏」目录）</button>
+            <button id="webdav-clear-btn" class="secondary hidden" type="button">清除配置</button>
+          </div>
+          <div id="webdav-status" class="status" role="status" aria-live="polite"></div>
+        </form>
+      </section>
+
+      <p class="fine-print">所有登录状态与剪藏内容仅在你的本地浏览器与 Notion / WebDAV 服务器之间直接传输，不经过任何第三方服务器。</p>
+    </main>
+    <script src="options.js"></script>
+  </body>
+</html>
